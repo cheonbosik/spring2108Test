@@ -2,8 +2,6 @@ package t1214.test2;
 
 import java.util.Scanner;
 
-import t1214.test1.Calculator;
-
 public class CalculatorRun {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
