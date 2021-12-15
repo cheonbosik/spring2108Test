@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import t1215.Test6VO;
+import t1215.TestVO;
 
 @Controller
 @RequestMapping("/1215")
@@ -273,8 +275,68 @@ public class T1215Controller {
 	
 	@RequestMapping("/test63Ok")
 	public String test63OkGet(Model model, Test6VO vo) {
-		
 		model.addAttribute("vo", vo);
 		return "1215/test6Ok";
+	}
+	
+	@RequestMapping("/test64Ok")
+	public String test64OkGet(Model model, Test6VO vo) {
+		vo.setImsiId("임시아이디입니다.");
+		model.addAttribute("vo", vo);
+		
+		String imsi = "임시연습입니다.";
+		model.addAttribute("imsi", imsi);
+		
+		return "1215/test6Ok";
+	}
+	
+	// ModelAndView()
+	@RequestMapping("/test7")
+	public ModelAndView test7Get() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("1215/test7");
+		
+		return mv;
+	}
+	
+	@RequestMapping("/test7Ok")
+	public ModelAndView test7OkGet(ModelAndView mv,
+			@RequestParam("mid") String mid,
+			String pwd) {
+		mv.addObject("mid", mid);
+		mv.addObject("pwd", pwd);
+		
+		mv.setViewName("1215/test7Ok");
+		return mv;
+	}
+	
+	@RequestMapping("/test8")
+	public ModelAndView test8Get() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("1215/test8");
+		
+		return mv;
+	}
+	
+	@RequestMapping("/test8Ok")
+	public String test8OkGet(Model model, TestVO vo) {
+		model.addAttribute("vo", vo);
+		
+		return "1215/test8Ok";
+	}
+	
+	@RequestMapping("/test9")
+	public String test9Get(Model model, TestVO vo) {
+		model.addAttribute("vo", vo);
+		
+		return "1215/test9";
+	}
+	
+	@RequestMapping(value="/test9", method = RequestMethod.POST)
+	public String test9(Model model, TestVO vo) {
+		model.addAttribute("vo", vo);
+		return "1215/test9Ok";
 	}
 }

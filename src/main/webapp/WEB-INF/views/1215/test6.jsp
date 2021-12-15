@@ -13,7 +13,8 @@
 <%-- <form method="get" action="${ctp}/1215/test6Ok"> --%>
 <%-- <form method="get" action="${ctp}/1215/test61Ok"> --%>
 <%-- <form method="get" action="${ctp}/1215/test62Ok"> --%>
-<form method="get" action="${ctp}/1215/test63Ok">
+<%-- <form method="get" action="${ctp}/1215/test63Ok"> --%>
+<form method="get" action="${ctp}/1215/test64Ok">
 	<p>
 	  아이디1 : <input type="text" name="mid1"/><br/>
 	  아이디2 : <input type="text" name="mid2"/><br/>

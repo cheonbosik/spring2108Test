@@ -8,6 +8,8 @@ public class Test6VO {
 	private String mid5;
 	private String pwd;
 	
+	private String imsiId;
+	
 	public String getMid1() {
 		return mid1;
 	}
@@ -44,9 +46,15 @@ public class Test6VO {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
+	public String getImsiId() {
+		return imsiId;
+	}
+	public void setImsiId(String imsiId) {
+		this.imsiId = imsiId;
+	}
 	@Override
 	public String toString() {
 		return "Test6VO [mid1=" + mid1 + ", mid2=" + mid2 + ", mid3=" + mid3 + ", mid4=" + mid4 + ", mid5=" + mid5
-				+ ", pwd=" + pwd + "]";
+				+ ", pwd=" + pwd + ", imsiId=" + imsiId + "]";
 	}
 }

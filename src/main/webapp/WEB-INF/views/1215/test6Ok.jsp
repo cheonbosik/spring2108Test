@@ -25,6 +25,9 @@
   아이디4 : ${vo.mid4}<br/>
   아이디5 : ${vo.mid5}<br/>
   비밀번호 : ${vo.pwd}<br/>
+  <hr/>
+  임시 아이디 : ${vo.imsiId}<br/>
+  임시 연습 : ${imsi}<br/>
 </p>
 <p><a href="${ctp}/1215/test6">돌아가기</a></p>
 </body>
