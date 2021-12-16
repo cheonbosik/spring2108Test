@@ -27,6 +27,26 @@
         <td><input type="text" name="nickName" class="form-control"/></td>
       </tr>
       <tr>
+        <th>레 벨</th>
+        <td>
+        <!--
+          - 비회원(99)은 서비스 사용 금지
+          - 준회원(4)은   '방명록'까지만 사용
+          - 정회원(3)은   '방명록+게시판' 사용
+          - 우수회원(2)/특별회원(1)은 '방명록+게시판+자료실' 사용
+          - 관리자(0)는 모든 서비스와 '관리자'메뉴 사용
+        -->
+          <select name="level" class="form-control">
+            <option value="3">정회원</option>
+            <option value="2">우수회원</option>
+            <option value="1">특별회원</option>
+            <option value="0">관리자</option>
+            <option value="4">준회원</option>
+            <!-- <option value="99">비회원</option> -->
+          </select>
+        </td>
+      </tr>
+      <tr>
         <td colspan="2" class="text-center">
           <span class="row">
             <span class="col-2"></span>

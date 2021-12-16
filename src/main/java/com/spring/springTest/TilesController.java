@@ -21,10 +21,11 @@ public class TilesController {
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public ModelAndView loginPost(ModelAndView mv,
 			HttpSession session,
-			String mid, String pwd, String nickName) {
+			String mid, String pwd, String nickName, int level) {
 		if(pwd.equals("1234")) {
 			session.setAttribute("sMid", mid);
 			session.setAttribute("sNickName", nickName);
+			session.setAttribute("sLevel", level);
 			
 			mv.addObject("mid", mid);
 			mv.setViewName("main/tilesMain");
@@ -54,23 +55,38 @@ public class TilesController {
 	}
 	
 	// 방명록 리스트
-	@RequestMapping("/guestList")
+	@RequestMapping("/guest/guestList")
 	public ModelAndView guestListGet(ModelAndView mv) {
+		System.out.println("이곳은 방명록 컨트롤러입니다.");
+		
 		mv.setViewName("guest/guestList");
 		return mv;
 	}
 	
 	// 게시판 리스트
-	@RequestMapping("/boardList")
+	@RequestMapping("/board/boardList")
 	public ModelAndView boardListGet(ModelAndView mv) {
+		System.out.println("이곳은 게시판 컨트롤러입니다.");
+		
 		mv.setViewName("board/boardList");
 		return mv;
 	}
 	
 	// 자료실 리스트
-	@RequestMapping("/pdsList")
+	@RequestMapping("/pds/pdsList")
 	public ModelAndView pdsListGet(ModelAndView mv) {
+		System.out.println("이곳은 자료실 컨트롤러입니다.");
+		
 		mv.setViewName("pds/pdsList");
+		return mv;
+	}
+	
+	// 관리자 리스트
+	@RequestMapping("/admin/adminList")
+	public ModelAndView adminListGet(ModelAndView mv) {
+		System.out.println("이곳은 관리자 컨트롤러입니다.");
+		
+		mv.setViewName("admin/adminList");
 		return mv;
 	}
 }

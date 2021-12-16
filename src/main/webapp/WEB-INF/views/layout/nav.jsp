@@ -11,9 +11,10 @@
 <body>
 <div style="width:100%; background-color:yellow; text-align:center;">
   <a href="${ctp}/tiles/tilesMain">홈으로</a> |
-  <a href="${ctp}/tiles/guestList">방명록</a> |
-  <a href="${ctp}/tiles/boardList">게시판</a> |
-  <a href="${ctp}/tiles/pdsList">자료실</a> |
+  <a href="${ctp}/tiles/guest/guestList">방명록</a> |
+  <a href="${ctp}/tiles/board/boardList">게시판</a> |
+  <a href="${ctp}/tiles/pds/pdsList">자료실</a> |
+  <c:if test="${sLevel == 0}"><a href="${ctp}/tiles/admin/adminList">관리자</a> |</c:if>
   <a href="${ctp}/tiles/login">로그아웃</a>
 </div>
 </body>
