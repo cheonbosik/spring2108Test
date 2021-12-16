@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC 
+  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+  
+<tiles-definitions>
+
+	<!-- tiles(레이아웃)를 적용하지 않는 화면 설계셋팅(loginLayout.jsp) -->
+	<definition name="layoutNo" template="/WEB-INF/views/layout/loginLayout.jsp"/>
+	<definition name="member/*" extends="layoutNo">
+	  <put-attribute name="content" value="/WEB-INF/views/member/{1}.jsp"/>
+	</definition>
+	<!-- 
+	<definition name="main/*" extends="layoutNo">
+	  <put-attribute name="content" value="/WEB-INF/views/main/{1}.jsp"/>
+	</definition>
+	 -->
+	 
+	<!-- tiles(레이아웃)를 적용하는 화면 설계셋팅(baseLayout.jsp) -->
+	<definition name="layoutYes" template="/WEB-INF/views/layout/baseLayout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/views/layout/nav.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp"/>
+	</definition>
+	<definition name="*/*" extends="layoutYes">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
+	</definition>
+	<definition name="*/*/*" extends="layoutYes">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
+	</definition>
+	
+</tiles-definitions>

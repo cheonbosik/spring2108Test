@@ -4,15 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>main.jsp</title>
+  <meta charset="UTF-8">
+  <title>guestList.jsp</title>
+  <jsp:include page="/WEB-INF/views/include/bs4.jsp"/>
 </head>
 <body>
-<p><br/></p>
-<h2>길동이네 집.....</h2>
-<hr/>
-<p>
-  <a href="${ctp}/tiles/login">로그인</a>
-</p>
+<p><br></p>
+<div class="container">
+  <h2>방 명 록</h2>
+  <hr/>
+  <p><img src="${ctp}/images/dog4.jpg" width="300px"/></p>
+  <hr/>
+</div>
 </body>
 </html>

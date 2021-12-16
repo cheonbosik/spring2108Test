@@ -335,8 +335,44 @@ public class T1215Controller {
 	}
 	
 	@RequestMapping(value="/test9", method = RequestMethod.POST)
-	public String test9(Model model, TestVO vo) {
+	public String test9Post(Model model, TestVO vo) {
 		model.addAttribute("vo", vo);
 		return "1215/test9Ok";
+	}
+	
+	@RequestMapping(value="/test10", method=RequestMethod.GET)
+	public String test10Get(Model model, String flag) {
+		if(flag!=null && flag.equals("NO"))	model.addAttribute("flag", "정보를 확인하세요");
+		return "1215/test10";
+	}
+	
+	@RequestMapping(value="/test10", method=RequestMethod.POST)
+	public String test10Post(Model model, TestVO vo) {
+		model.addAttribute("vo", vo);
+		
+		if(vo.getMid().equals("admin") && vo.getPwd().equals("1234")) {
+			return "1215/test10Ok";
+		}
+		else {
+			//return "1215/test10";
+			return "redirect:/1215/test10?flag=NO";
+		}
+	}
+	
+	@RequestMapping(value="/test11", method=RequestMethod.GET)
+	public String test11Get() {
+		return "1215/test11";
+	}
+	
+	@RequestMapping(value="/test11", method=RequestMethod.POST)
+	public String test11Post(Model model,
+			@RequestParam(name="mid", defaultValue = "abcd", required=false) String mid,
+			@RequestParam(name="pwd", defaultValue="1234",  required=false) String pwd,
+		  @RequestParam(name="pag", defaultValue="1",  required=false) int pag) {
+		
+		model.addAttribute("mid", mid);
+		model.addAttribute("pwd", pwd);
+		
+		return "1215/test11Ok";
 	}
 }

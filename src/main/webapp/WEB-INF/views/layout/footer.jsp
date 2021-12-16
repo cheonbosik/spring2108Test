@@ -4,15 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>main.jsp</title>
+  <meta charset="UTF-8">
+  <title>footer.jsp</title>
+  <jsp:include page="/WEB-INF/views/include/bs4.jsp"/>
 </head>
 <body>
-<p><br/></p>
-<h2>길동이네 집.....</h2>
-<hr/>
-<p>
-  <a href="${ctp}/tiles/login">로그인</a>
-</p>
+<p><br></p>
+<div style="width:100%; height:80px; background-color:gray; text-align:center;">
+  <br/>
+  <h4>이곳은 Footer 영역입니다.</h4>
+</div>
 </body>
 </html>
