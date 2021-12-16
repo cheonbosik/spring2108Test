@@ -5,13 +5,16 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>footer.jsp</title>
+  <title>pdsList.jsp</title>
   <jsp:include page="/WEB-INF/views/include/bs4.jsp"/>
 </head>
 <body>
-<div style="width:100%; height:80px; background-color:gray; text-align:center;">
-  <br/>
-  <h4>이곳은 Footer 영역입니다.</h4>
+<p><br></p>
+<div class="container">
+  <h2>자 료 실</h2>
+  <hr/>
+  <p><img src="${ctp}/images/dog7.jpg" width="300px"/></p>
+  <hr/>
 </div>
 </body>
 </html>

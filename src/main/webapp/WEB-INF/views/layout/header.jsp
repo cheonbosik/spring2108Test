@@ -9,7 +9,6 @@
   <jsp:include page="/WEB-INF/views/include/bs4.jsp"/>
 </head>
 <body>
-<p><br></p>
 <div style="width:100%; height:120px; background-color:skyblue; text-align:center;">
   <br/>
   <h3>이곳은 Header 영역입니다.</h3>

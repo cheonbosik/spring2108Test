@@ -59,4 +59,18 @@ public class TilesController {
 		mv.setViewName("guest/guestList");
 		return mv;
 	}
+	
+	// 게시판 리스트
+	@RequestMapping("/boardList")
+	public ModelAndView boardListGet(ModelAndView mv) {
+		mv.setViewName("board/boardList");
+		return mv;
+	}
+	
+	// 자료실 리스트
+	@RequestMapping("/pdsList")
+	public ModelAndView pdsListGet(ModelAndView mv) {
+		mv.setViewName("pds/pdsList");
+		return mv;
+	}
 }

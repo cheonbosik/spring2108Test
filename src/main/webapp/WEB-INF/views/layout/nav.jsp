@@ -9,7 +9,6 @@
   <jsp:include page="/WEB-INF/views/include/bs4.jsp"/>
 </head>
 <body>
-<p><br></p>
 <div style="width:100%; background-color:yellow; text-align:center;">
   <a href="${ctp}/tiles/tilesMain">홈으로</a> |
   <a href="${ctp}/tiles/guestList">방명록</a> |
