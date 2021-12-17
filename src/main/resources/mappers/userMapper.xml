@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.springTest.dao.UserDAO">
-
+	<select  id="getUserList" resultType="com.spring.springTest.vo.UserVO">
+		select * from user order by idx desc;
+	</select>
+	  
+	<insert id="setUserInput">
+		insert into user values (default,#{vo.name},#{vo.pwd},#{vo.age});
+	</insert>
+	
+	<delete id="setUserDelete">
+		delete from user where idx = #{idx};
+	</delete>
+	
+	<select id="setUserUpdate" resultType="com.spring.springTest.vo.UserVO">
+	  select * from user where idx = #{idx};
+	</select>
+	
+	<update id="setUserUpdateOk">
+		update user set name = #{vo.name}, pwd = #{vo.pwd}, age = #{vo.age} where idx = #{vo.idx};
+	</update>
+	
+	<select id="getUserSearch" resultType="com.spring.springTest.vo.UserVO">
+	  <!-- select * from user where name = #{name}; -->
+	  select * from user where name like concat('%',#{name},'%');
+	</select>
 </mapper>

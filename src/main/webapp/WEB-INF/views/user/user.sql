@@ -12,3 +12,5 @@ desc user;
 alter table user add column pwd varchar(100) not null;
 
 select * from user;
+
+select * from user order by idx desc;
