@@ -14,11 +14,11 @@
     	
     	if(name == "") {
     		alert("이름을 입력하세요!");
-    		name.focus();
+    		document.getElementById("name").focus();
     	}
     	else if(pwd == "") {
     		alert("비밀번호를 입력하세요!");
-    		pwd.focus();
+    		document.getElementById("pwd").focus();
     	}
     	else {
     		myform.submit();

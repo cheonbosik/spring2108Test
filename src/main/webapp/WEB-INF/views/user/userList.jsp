@@ -17,7 +17,7 @@
     	var name = document.getElementById("name").value;
     	if(name == "") {
     		alert("검색할 성명을 입력하세요!");
-    		name.focus();
+    		document.getElementById("name").focus();
     	}
     	else {
     		location.href = "${ctp}/user/userSearch?name="+name;
