@@ -1,11 +1,19 @@
 package com.spring.springTest;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.spring.springTest.vo.ValidatorVO;
 
 @Controller
 @RequestMapping("/tiles")
@@ -89,4 +97,40 @@ public class TilesController {
 		mv.setViewName("admin/adminList");
 		return mv;
 	}
+	
+	// Validator(데이터검증) 테스트
+	@RequestMapping(value="/validatorForm", method = RequestMethod.GET)
+	public String validatorFormGet() {
+		return "/validator/validatorForm";
+	}
+	
+	@RequestMapping(value="/validatorForm", method = RequestMethod.POST)
+	public String validatorFormPost(Model model, @Validated ValidatorVO vo, BindingResult bindingResult) {
+		System.out.println("아이디 : " + vo.getMid());
+		System.out.println("비밀번호 : " + vo.getPwd());
+		System.out.println("나이 : " + vo.getAge());
+		System.out.println("error : " + bindingResult.hasErrors());
+		
+		/*
+		if(vo.getMid().equals("")) {
+			System.out.println("아이디가 비어있습니다.");
+		}
+		*/
+		
+		if(bindingResult.hasErrors()) {
+			List<ObjectError> list = bindingResult.getAllErrors();
+			System.out.println("~~~~~~~~~~~~~~~~~~");
+			for(ObjectError e : list) {
+				System.out.println("메세지 : " + e.getDefaultMessage());
+			}
+			System.out.println("~~~~~~~~~~~~~~~~~~");
+			return "redirect:/tiles/validatorForm";
+		}
+		
+		model.addAttribute("vo", vo);
+		
+		return "/validator/validatorFormOk";
+	}
+	
+	
 }
