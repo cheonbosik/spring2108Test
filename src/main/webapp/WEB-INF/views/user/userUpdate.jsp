@@ -45,7 +45,7 @@
         <td><input type="number" name="age" value="${vo.age}" min="1" class="form-control"/></td>
       </tr>
       <tr>
-        <td colspan="2" class="text-center">
+        <td colspan="2" class="text-center">:${vo.idx}:
           <input type="button" value="수정하기" onclick="fCheck()" class="btn btn-secondary"/>
           <input type="reset" value="다시입력" class="btn btn-secondary"/>
           <input type="button" value="돌아가기" onclick="location.href='${ctp}/user/userList';" class="btn btn-secondary"/>

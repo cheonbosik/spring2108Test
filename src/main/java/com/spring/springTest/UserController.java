@@ -17,6 +17,8 @@ import com.spring.springTest.vo.UserVO;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+	String msgFlag = "";
+	
 	@Autowired
 	UserService userService;
 	
@@ -84,7 +86,9 @@ public class UserController {
 		else {
 			System.out.println("비밀번호가 틀립니다.");
 			//return "redirect:/user/userPwdCheck?idx="+idx;
-			return "redirect:/msg/userPwdCheckNo";
+			msgFlag = "userPwdCheckNo$idx="+idx;
+			
+			return "redirect:/msg/" + msgFlag;
 		}
 	}
 	
@@ -93,7 +97,7 @@ public class UserController {
 		vo = userService.setUserUpdate(idx);
 		String pwd = (String) session.getAttribute("sPwd");
 		vo.setPwd(pwd);
-		session.removeAttribute("sPwd");
+		//session.removeAttribute("sPwd");
 		model.addAttribute("vo", vo);
 		
 		return "user/userUpdate";
@@ -102,11 +106,18 @@ public class UserController {
 	
 	@RequestMapping(value="/userUpdate", method = RequestMethod.POST)
 	public String userUpdatePost(UserVO vo) {
+		System.out.println("idx(컨트롤러) : " + vo.getIdx());
+		
 		vo.setPwd(bCryptPasswordEncoder.encode(vo.getPwd()));
 		userService.setUserUpdateOk(vo);
 		
 		//return "user/userUpdate";
-		return "redirect:/msg/userUpdateOk";
+		//return "redirect:/msg/userUpdateOk";
+		//return "redirect:/msg/?msgFlag=userUpdateOk&idx="+vo.getIdx();
+		
+		msgFlag = "userUpdateOk$idx="+vo.getIdx();
+		
+		return "redirect:/msg/" + msgFlag;
 	}
 	
 	@RequestMapping("/userSearch")
