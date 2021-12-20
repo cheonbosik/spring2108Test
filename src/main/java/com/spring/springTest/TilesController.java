@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.springTest.vo.LomBokVO;
 import com.spring.springTest.vo.ValidatorVO;
 
 @Controller
@@ -117,7 +118,7 @@ public class TilesController {
 		}
 		*/
 		
-		if(bindingResult.hasErrors()) {
+		if(bindingResult.hasErrors()) {  // bindingResult.hasErrors() 결과값이 true이면 앞에서 전송된 자료에 오류가 있다는 것이다.
 			List<ObjectError> list = bindingResult.getAllErrors();
 			System.out.println("~~~~~~~~~~~~~~~~~~");
 			for(ObjectError e : list) {
@@ -130,6 +131,30 @@ public class TilesController {
 		model.addAttribute("vo", vo);
 		
 		return "/validator/validatorFormOk";
+	}
+	
+	@RequestMapping(value="/lombokForm", method = RequestMethod.GET)
+	public String lombokFormGet() {
+		return "/lombok/lombokForm";
+	}
+	
+	@RequestMapping(value="/lombokForm", method = RequestMethod.POST)
+	public String lombokFormPost(Model model, LomBokVO vo) {
+		System.out.println("vo : " + vo);
+		
+		vo.setSu1(100);
+		vo.setSu2(200);
+		vo.setOp("+");
+		int hap = vo.getSu1() + vo.getSu2();
+		
+		//Date date = new Date();
+		//vo.setWDate(date);
+		System.out.println("vo : " + vo);
+		
+		model.addAttribute("hap", hap);
+		model.addAttribute("vo", vo);
+		
+		return "/lombok/lombokFormOk";
 	}
 	
 	

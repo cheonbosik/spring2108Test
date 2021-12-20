@@ -15,7 +15,8 @@
 <p>
   <a href="${ctp}/tiles/login" class="btn btn-secondary">로그인</a> &nbsp;
   <a href="${ctp}/user/userList" class="btn btn-secondary">User리스트</a> &nbsp;
-  <a href="${ctp}/tiles/validatorForm" class="btn btn-secondary">Validator(데이터검증)연습</a>
+  <a href="${ctp}/tiles/validatorForm" class="btn btn-secondary">Validator(데이터검증)연습</a> &nbsp;
+  <a href="${ctp}/tiles/lombokForm" class="btn btn-secondary">lombok연습</a>
 </p>
 </body>
 </html>
