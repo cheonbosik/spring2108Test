@@ -18,4 +18,6 @@ public interface UserService {
 
 	public List<UserVO> getUserSearch(String name);
 
+	public String getUserPwdSearch(int idx);
+
 }

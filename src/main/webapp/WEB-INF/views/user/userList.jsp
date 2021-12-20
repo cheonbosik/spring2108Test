@@ -54,7 +54,7 @@
         <td>${vo.pwd}</td>
         <td>${vo.age}</td>
         <td>
-          <input type="button" value="수정" onclick="location.href='${ctp}/user/userUpdate?idx=${vo.idx}';" class="btn btn-secondary btn-sm"/>
+          <input type="button" value="수정" onclick="location.href='${ctp}/user/userPwdCheck?idx=${vo.idx}';" class="btn btn-secondary btn-sm"/>
           <input type="button" value="삭제" onclick="javascript:delCheck(${vo.idx})" class="btn btn-secondary btn-sm"/>
         </td>
       </tr>

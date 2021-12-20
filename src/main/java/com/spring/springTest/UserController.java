@@ -2,7 +2,10 @@ package com.spring.springTest;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +19,9 @@ import com.spring.springTest.vo.UserVO;
 public class UserController {
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@RequestMapping(value="/userList")
 	public String userListGet(Model model) {
@@ -32,31 +38,75 @@ public class UserController {
 	
 	@RequestMapping(value="/userInput", method = RequestMethod.POST)
 	public String userInputPost(UserVO vo) {
+//		String pwd = bCryptPasswordEncoder.encode("1234");
+//		System.out.println("1.pwd : " + pwd);
+		
+		/*
+		String pwd = vo.getPwd();
+		pwd = bCryptPasswordEncoder.encode(pwd);
+		vo.setPwd(pwd);
+		*/
+		vo.setPwd(bCryptPasswordEncoder.encode(vo.getPwd()));
+		
 		userService.setUserInput(vo);
 		
-		return "redirect:/user/userList";
+		//return "redirect:/user/userList";
+		return "redirect:/msg/userInputOk";
 	}
 	
 	@RequestMapping("/userDelete")
 	public String userDeleteGet(int idx) {
 		userService.setUserDelete(idx);
 		
-		return "redirect:/user/userList";
+		//return "redirect:/user/userList";
+		return "redirect:/msg/userDeleteOk";
+	}
+	
+	@RequestMapping(value="/userPwdCheck", method = RequestMethod.GET)
+	public String userPwdCheckGet(Model model, int idx) {
+		model.addAttribute("idx", idx);
+		
+		return "user/userPwdCheck";
+	}
+	
+	@RequestMapping(value="/userPwdCheck", method = RequestMethod.POST)
+	public String userPwdCheckPost(UserVO vo, HttpSession session) {
+		int idx = vo.getIdx();
+		String pwd = vo.getPwd();
+		session.setAttribute("sPwd", pwd);
+		
+		String dbPwd = userService.getUserPwdSearch(idx);
+		
+		if(vo != null && bCryptPasswordEncoder.matches(pwd, dbPwd)) {
+			System.out.println("비밀번호가 맞습니다.");
+			return "redirect:/user/userUpdate?idx="+idx;
+		}
+		else {
+			System.out.println("비밀번호가 틀립니다.");
+			//return "redirect:/user/userPwdCheck?idx="+idx;
+			return "redirect:/msg/userPwdCheckNo";
+		}
 	}
 	
 	@RequestMapping(value="/userUpdate", method = RequestMethod.GET)
-	public String userUpdateGet(Model model, int idx) {
-		UserVO vo = userService.setUserUpdate(idx);
+	public String userUpdateGet(int idx, HttpSession session, UserVO vo, Model model) {
+		vo = userService.setUserUpdate(idx);
+		String pwd = (String) session.getAttribute("sPwd");
+		vo.setPwd(pwd);
+		session.removeAttribute("sPwd");
 		model.addAttribute("vo", vo);
 		
 		return "user/userUpdate";
 	}
 	
+	
 	@RequestMapping(value="/userUpdate", method = RequestMethod.POST)
 	public String userUpdatePost(UserVO vo) {
+		vo.setPwd(bCryptPasswordEncoder.encode(vo.getPwd()));
 		userService.setUserUpdateOk(vo);
 		
-		return "redirect:/user/userList";
+		//return "user/userUpdate";
+		return "redirect:/msg/userUpdateOk";
 	}
 	
 	@RequestMapping("/userSearch")

@@ -43,4 +43,9 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getUserSearch(name);
 	}
 
+	@Override
+	public String getUserPwdSearch(int idx) {
+		return userDAO.getUserPwdSearch(idx);
+	}
+
 }

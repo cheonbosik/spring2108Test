@@ -20,4 +20,6 @@ public interface UserDAO {
 
 	public List<UserVO> getUserSearch(@Param("name") String name);
 
+	public String getUserPwdSearch(@Param("idx") int idx);
+
 }
